@@ -1,11 +1,16 @@
-# web-chess
+# Simple Web-Based Board Games
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+This project is focused on creating a web-based platform for simple board games. Currently, we have implemented chess as our first game. The project uses modern web technologies to provide a seamless and interactive gaming experience.
 
-Currently, two official plugins are available:
+## Technologies Used
+Vite, React, TypeScript, OOP, WebSockets.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+Chess Game: A fully functional chess game playable in the web browser.
+Multiplayer Support: Players can connect with friends over the internet. Each game session is secured by a room key to ensure only invited players can join.
+
+
 
 ## Expanding the ESLint configuration
 
