@@ -12,14 +12,13 @@
 
 .white {
   background-color: #e6cea1;
-
-  > img {
-    filter: invert();
-  }
 }
 
 .figure {
-  max-width: 100%;
-  width: auto;
-  height: 80%;
+  width: 80%;
+  height: auto;
+}
+
+.whiteFigure {
+  filter: invert();
 }

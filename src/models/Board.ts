@@ -1,9 +1,11 @@
-import { CELLS_PER_RAW } from '@/constants/main';
+import {
+  CELLS_PER_RAW,
+  FIGURES_ARRANGEMENT,
+} from '@/constants/main';
 
 import { Cell } from './Cell';
 import { Colors } from './Colors';
-
-import { Bishop } from './figures/Bishop';
+import { Figure } from './figures';
 
 export class Board {
   cells: Cell[][] = [];
@@ -34,7 +36,31 @@ export class Board {
     return this.cells[y][x];
   }
 
-  public addFigures() {
-    new Bishop(Colors.WHITE, this.getCell(3, 3));
+  private addFiguresRow(
+    figures: (typeof Figure)[],
+    isPawnRow = false,
+  ) {
+    figures.forEach((figure, col) => {
+      new figure(
+        Colors.BLACK,
+        this.getCell(
+          col,
+          isPawnRow ? 1 : 0,
+        ),
+      );
+
+      new figure(
+        Colors.WHITE,
+        this.getCell(
+          col,
+          isPawnRow ? 6 : 7,
+        ),
+      );
+    });
+  }
+
+  public setupFigures() {
+    this.addFiguresRow(FIGURES_ARRANGEMENT.firstLine);
+    this.addFiguresRow(FIGURES_ARRANGEMENT.pawns, true);
   }
 }

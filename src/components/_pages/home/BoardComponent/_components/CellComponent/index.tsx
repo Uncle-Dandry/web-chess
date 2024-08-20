@@ -29,7 +29,13 @@ const CellComponent: FC<CellComponentProps> = ({
     >
       {Boolean(figure?.logo) && (
         <img
-          className={styles.figure}
+          className={`${
+            styles.figure
+          }${
+            figure?.color !== Colors.BLACK
+              ? ` ${styles.whiteFigure}`
+              : ''
+          }`}
           loading="lazy"
           src={figure?.logo}
           alt={figure?.name}

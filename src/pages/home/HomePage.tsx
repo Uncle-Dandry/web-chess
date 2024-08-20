@@ -19,7 +19,7 @@ const HomePage = () => {
   const restart = () => {
     const newBoard = new Board();
     newBoard.initCells();
-    newBoard.addFigures();
+    newBoard.setupFigures();
 
     setBoard(newBoard);
   };
