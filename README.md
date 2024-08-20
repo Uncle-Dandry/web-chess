@@ -1,5 +1,7 @@
 # Simple Web-Based Board Games
 
+# Under construction
+
 ## Overview
 This project is focused on creating a web-based platform for simple board games. Currently, we have implemented chess as our first game. The project uses modern web technologies to provide a seamless and interactive gaming experience.
 
