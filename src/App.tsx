@@ -1,4 +1,4 @@
-import HomePage from './routes/home/HomePage';
+import HomePage from '@/pages/home/HomePage';
 
 import './App.css';
 
