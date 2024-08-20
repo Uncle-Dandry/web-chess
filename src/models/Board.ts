@@ -2,7 +2,8 @@ import { CELLS_PER_RAW } from '@/constants/main';
 
 import { Cell } from './Cell';
 import { Colors } from './Colors';
-import { Queen } from './figures/Queen';
+
+import { Bishop } from './figures/Bishop';
 
 export class Board {
   cells: Cell[][] = [];
@@ -14,11 +15,15 @@ export class Board {
       const row: Cell[] = [];
 
       for (let j = 0; j < CELLS_PER_RAW; j++) {
-        if ((i + j) % 2 !== 0) {
-          row.push(new Cell(j, i, Colors.BLACK, this, null));
-        } else {
-          row.push(new Cell(j, i, Colors.WHITE, this, null));
-        } 
+        row.push(new Cell(
+          j,
+          i,
+          (i + j) % 2 !== 0 // check is counting
+            ? Colors.BLACK
+            : Colors.WHITE,
+          this,
+          null,
+        ));
       }
 
       this.cells.push(row);
@@ -30,6 +35,6 @@ export class Board {
   }
 
   public addFigures() {
-    new Queen(Colors.WHITE, this.getCell(3, 3));
+    new Bishop(Colors.WHITE, this.getCell(3, 3));
   }
 }

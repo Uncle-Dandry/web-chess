@@ -1,3 +1,5 @@
+import { generateUniqueId } from '@/utils';
+
 import { Cell } from '../Cell';
 import { Colors } from '../Colors';
 
@@ -12,22 +14,22 @@ export enum FigureNames {
 }
 
 export class Figure {
+  id: string;
   color: Colors;
   logo: string;
   cell: Cell;
   name: FigureNames;
-  id: number;
 
   constructor(color: Colors, cell: Cell) {
+    this.id = generateUniqueId();
     this.color = color;
     this.cell = cell;
     this.cell.figure = this;
-    this.logo = '';
     this.name = FigureNames.FIGURE;
-    this.id = Math.random();
+    this.logo = '';
   }
 
-  canMove(target: Cell): boolean {
+  private canMove(target: Cell): boolean {
     return true;
   }
 

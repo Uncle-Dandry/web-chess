@@ -1,17 +1,19 @@
 import type { FC } from 'react';
 
 import { Cell } from '@/models/Cell';
+import { Colors } from '@/models/Colors';
 
 import styles from './CellComponent.module.css';
 
 interface CellComponentProps {
-  colorBlack: boolean;
   cell: Cell;
 }
 
 const CellComponent: FC<CellComponentProps> = ({
-  colorBlack = true,
-  cell,
+  cell: {
+    color: cellColor,
+    figure,
+  },
 }) => {
   return (
     <div
@@ -19,17 +21,18 @@ const CellComponent: FC<CellComponentProps> = ({
         `${
           styles.cell
         } ${
-          colorBlack
+          cellColor === Colors.BLACK
             ? styles.black
             : styles.white
         }`
       }
     >
-      {cell?.figure?.logo && (
+      {Boolean(figure?.logo) && (
         <img
           className={styles.figure}
-          alt="figure"
-          src={cell.figure.logo}
+          loading="lazy"
+          src={figure?.logo}
+          alt={figure?.name}
         />
       )}
     </div>

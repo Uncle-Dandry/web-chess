@@ -17,11 +17,10 @@ const BoardComponent: FC<BoardComponentProps> = ({
 }) => {
   return (
     <div className={styles.chessBoard}>
-      {board.cells.map((row, colIndex) => (
+      {board.cells.map((col, colIndex) => (
         <Fragment key={colIndex}>
-          {row.map((cell, cellIndex) => (
+          {col.map((cell, cellIndex) => (
             <CellComponent
-              colorBlack={(cellIndex + colIndex) % 2 === 0}
               key={`${cellIndex}-${colIndex}`}
               cell={cell}
             />
