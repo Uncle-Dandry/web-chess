@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  user-select: none;
 }
 
 .black {
@@ -12,6 +13,14 @@
 
 .white {
   background-color: #e6cea1;
+}
+
+.selected {
+  border: 3px solid #cfd4d6;
+}
+
+.cellAvailable {
+  border: 10px solid #000000;
 }
 
 .figure {

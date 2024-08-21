@@ -1,5 +1,5 @@
 import {
-  CELLS_PER_RAW,
+  CELLS_PER_ROW,
   FIGURES_ARRANGEMENT,
 } from '@/constants/main';
 
@@ -9,14 +9,14 @@ import { Figure } from './figures';
 
 export class Board {
   cells: Cell[][] = [];
-  lostBlack: number = 0;
-  lostWhite: number = 0;
+  lostBlack: Figure[] = [];
+  lostWhite: Figure[] = [];
 
   public initCells() {
-    for (let i = 0; i < CELLS_PER_RAW; i++) {
+    for (let i = 0; i < CELLS_PER_ROW; i++) {
       const row: Cell[] = [];
 
-      for (let j = 0; j < CELLS_PER_RAW; j++) {
+      for (let j = 0; j < CELLS_PER_ROW; j++) {
         row.push(new Cell(
           j,
           i,
@@ -30,6 +30,23 @@ export class Board {
 
       this.cells.push(row);
     }
+  }
+
+  public getCopyBoard(): Board {
+    const newBoard = new Board();
+    newBoard.cells = this.cells;
+    newBoard.lostBlack = this.lostBlack;
+    newBoard.lostWhite = this.lostWhite;
+
+    return newBoard;
+  }
+
+  public highlightCells(selectedCell: Cell | null) {
+    this.cells.forEach((row) => {
+      row.forEach((target) => {
+        target.available = Boolean(selectedCell?.figure?.canMove(target));
+      });
+    });
   }
 
   public getCell(x: number, y: number) {

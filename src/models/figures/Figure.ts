@@ -29,11 +29,9 @@ export class Figure {
     this.logo = '';
   }
 
-  private canMove(target: Cell): boolean {
-    return true;
+  public canMove(target: Cell) : boolean {
+    return target.figure?.color !== this.color;
   }
 
-  public moveFigure(target: Cell) {
-    
-  }
+  public moveFigure(target: Cell) {};
 }

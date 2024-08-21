@@ -11,4 +11,11 @@ export class Rook extends Figure {
     this.name = FigureNames.ROOK;
     this.logo = blackLogo;
   }
+
+  public canMove(target: Cell): boolean {    
+    return super.canMove(target) && (
+      this.cell.isEmptyVertical(target)
+      || this.cell.isEmptyHorizontal(target)
+    );
+  }
 }
