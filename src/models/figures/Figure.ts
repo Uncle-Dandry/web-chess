@@ -33,5 +33,5 @@ export class Figure {
     return target.figure?.color !== this.color;
   }
 
-  public moveFigure(target: Cell) {};
+  public moveFigure(_target: Cell) {};
 }

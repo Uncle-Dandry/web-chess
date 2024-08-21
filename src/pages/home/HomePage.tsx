@@ -10,8 +10,8 @@ import styles from './HomePage.module.css';
 
 const HomePage = () => {
   const [board, setBoard] = useState<Board>(new Board());
-  const [whitePlayer, setWhitePlayer] = useState(new Player(Colors.WHITE));
-  const [blackPlayer, setBlackPlayer] = useState(new Player(Colors.BLACK));
+  const [whitePlayer, _setWhitePlayer] = useState(new Player(Colors.WHITE));
+  const [blackPlayer, _setBlackPlayer] = useState(new Player(Colors.BLACK));
   const [currentPlayer, setCurrentPlayer] = useState<Player | null>(null);
 
   useEffect(
