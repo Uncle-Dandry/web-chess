@@ -1,17 +1,24 @@
 import type { FC } from 'react';
 
 import { Cell } from '@/models/Cell';
+import { Colors } from '@/models/Colors';
 
 import styles from './CellComponent.module.css';
 
 interface CellComponentProps {
-  colorBlack: boolean;
+  selected?: boolean;
   cell: Cell;
+  onCellClick: () => void;
 }
 
 const CellComponent: FC<CellComponentProps> = ({
-  colorBlack = true,
-  cell,
+  selected = false,
+  cell: {
+    available,
+    color: cellColor,
+    figure,
+  },
+  onCellClick,
 }) => {
   return (
     <div
@@ -19,17 +26,33 @@ const CellComponent: FC<CellComponentProps> = ({
         `${
           styles.cell
         } ${
-          colorBlack
+          cellColor === Colors.BLACK
             ? styles.black
             : styles.white
+        }${
+          selected
+            ? ` ${styles.selected}`
+            : ''
         }`
       }
+      onClick={onCellClick}
     >
-      {cell?.figure?.logo && (
+      {!figure && available && (
+        <span className={styles.cellAvailable} />
+      )}
+
+      {Boolean(figure?.logo) && (
         <img
-          className={styles.figure}
-          alt="figure"
-          src={cell.figure.logo}
+          className={`${
+            styles.figure
+          }${
+            figure?.color !== Colors.BLACK
+              ? ` ${styles.whiteFigure}`
+              : ''
+          }`}
+          loading="lazy"
+          src={figure?.logo}
+          alt={figure?.name}
         />
       )}
     </div>
