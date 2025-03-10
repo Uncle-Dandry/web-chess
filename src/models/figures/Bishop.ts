@@ -2,7 +2,7 @@ import { Cell } from '../Cell';
 import { Colors } from '../Colors';
 import { Figure, FigureNames } from './Figure';
 
-import blackLogo from '@/assets/black-bishop.svg';
+import blackLogo from '@/assets/figures/black-bishop.webp';
 
 export class Bishop extends Figure {
   constructor(color: Colors, cell: Cell) {

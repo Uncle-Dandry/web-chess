@@ -33,10 +33,6 @@ export class Cell {
     return this.figure === null;
   }
 
-  public isEnemy(target: Cell): boolean {
-    return target.figure !== null && this.figure?.color !== target.figure.color;
-  }
-
   public isEmptyVertical(target: Cell): boolean {
     if (this.x !== target.x) return false;
 
@@ -85,17 +81,9 @@ export class Cell {
     return true;
   }
 
-  public moveFigure(target: Cell) {
-    if (this.figure?.canMove(target)) {
-      this.figure.moveFigure(target);
-
-      if (target.figure) {
-        this.addLostFigure(target.figure);
-      }
-
-      target.setFigure(this.figure);
-      this.figure = null;
-    }
+  public isEnemy(target: Cell): boolean {
+    return Boolean(target.figure)
+      && this.figure?.color !== target.figure?.color;
   }
 
   public setFigure(figure: Figure) {
@@ -108,6 +96,27 @@ export class Cell {
       this.board.lostBlack.push(figure);
     } else {
       this.board.lostWhite.push(figure);
+    }
+  }
+
+  public isCheck() {
+    
+  }
+
+  public isCheckmate() {
+    
+  }
+
+  public moveFigure(target: Cell) {
+    if (this.figure?.canMove(target)) {
+      this.figure.moveFigure(target);
+
+      if (target.figure) {
+        this.addLostFigure(target.figure);
+      }
+
+      target.setFigure(this.figure);
+      this.figure = null;
     }
   }
 }

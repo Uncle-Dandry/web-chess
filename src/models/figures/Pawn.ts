@@ -2,7 +2,7 @@ import { Cell } from '../Cell';
 import { Colors } from '../Colors';
 import { Figure, FigureNames } from './Figure';
 
-import blackLogo from '@/assets/black-pawn.svg';
+import blackLogo from '@/assets/figures/black-pawn.webp';
 
 export class Pawn extends Figure {
   isFirstStep: boolean = true;

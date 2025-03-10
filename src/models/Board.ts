@@ -11,6 +11,12 @@ export class Board {
   cells: Cell[][] = [];
   lostBlack: Figure[] = [];
   lostWhite: Figure[] = [];
+  kingPositions: {
+    [color: string]: Cell | null,
+  } = {
+    [Colors.WHITE]: null,
+    [Colors.BLACK]: null,
+  };
 
   public initCells() {
     for (let i = 0; i < CELLS_PER_ROW; i++) {
@@ -37,6 +43,7 @@ export class Board {
     newBoard.cells = this.cells;
     newBoard.lostBlack = this.lostBlack;
     newBoard.lostWhite = this.lostWhite;
+    newBoard.kingPositions = { ...this.kingPositions };
 
     return newBoard;
   }
@@ -79,5 +86,8 @@ export class Board {
   public setupFigures() {
     this.addFiguresRow(FIGURES_ARRANGEMENT.firstLine);
     this.addFiguresRow(FIGURES_ARRANGEMENT.pawns, true);
+
+    this.kingPositions[Colors.BLACK] = this.getCell(4, 0);
+    this.kingPositions[Colors.WHITE] = this.getCell(4, 7);
   }
 }
